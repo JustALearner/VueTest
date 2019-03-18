@@ -36,9 +36,9 @@ Axios.interceptors.request.use(
   error => {
     // error 的回调信息
 
-    Message.error({
-      message: "加载超时"
-    });
+    // Message.error({
+    //   message: "加载超时"
+    // });
 
     return Promise.reject(error);
   }
@@ -52,18 +52,18 @@ Axios.interceptors.response.use(
     //   return Promise.reject(res.data.error);
     // }
     // console.log("response", res.data);
-    Message.success({
-      message: "成功返回"
-    });
+    // Message.success({
+    //   message: "成功返回"
+    // });
 
     return res;
   },
   error => {
     // console.log(error);
 
-    Message.error({
-      message: "加载失败"
-    });
+    // Message.error({
+    //   message: "加载失败"
+    // });
     if (error.data) {
       switch (error.data.code) {
         case 401:

@@ -5,7 +5,7 @@
       "icon": "el-icon-menu",
       "childMenu": [{
         "title": "用户管理",
-        "path": "/layout/userList",
+        "path": "/layout/userInfos",
         "flag": false,
         "actions": ["Insert", "Del", "Modify"]
       }, {

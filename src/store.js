@@ -11,6 +11,7 @@ export default new Vuex.Store({
   mutations: {
     // 添加tabs
     add_tabs(state, data) {
+      console.log("addtab:", data);
       this.state.openTab.push(data);
     },
     // 删除tabs

@@ -25,9 +25,9 @@ export default new Router({
       component: layout,
       children: [
         {
-          path: "userList",
-          name: "",
-          component: resolve => require(["./components/userList.vue"], resolve)
+          path: "userInfos",
+          name: "用户信息",
+          component: resolve => require(["./components/UserInfos.vue"], resolve)
         }
       ]
     }

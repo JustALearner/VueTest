@@ -9,12 +9,10 @@
           <my-aside></my-aside>
         </el-aside>
         <el-main>
-          <el-main>
-            <keep-alive>
-              <!-- <router-view></router-view> -->
-              <my-tabs></my-tabs>
-            </keep-alive>
-          </el-main>
+          <keep-alive>
+            <!-- <router-view></router-view> -->
+            <my-tabs></my-tabs>
+          </keep-alive>
         </el-main>
       </el-container>
 
@@ -78,6 +76,7 @@ export default {
   top: 80px;
   bottom: 0;
   right: 0;
+  padding: 0;
   background-color: #e9eef3;
   color: #333;
   text-align: left;

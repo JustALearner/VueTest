@@ -29,13 +29,13 @@ export default {
   methods: {
     //tab标签点击时，切换相应的路由
     tabClick(tab) {
-      console.log("tab", tab);
-      console.log("active", this.activeIndex);
+      // console.log("tab", tab);
+      // console.log("active", this.activeIndex);
       this.$router.push({ path: this.activeIndex });
     },
     //移除tab标签
     tabRemove(targetName) {
-      console.log("tabRemove", targetName);
+      // console.log("tabRemove", targetName);
       //首页不删
       if (targetName == "/") {
         return;
@@ -54,7 +54,7 @@ export default {
           );
           this.$router.push({ path: this.activeIndex });
         } else {
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/layout" });
         }
       }
     }
@@ -93,17 +93,16 @@ export default {
   },
   watch: {
     $route(to, from) {
-      console.log("123", to, from);
+      console.log("路由起点:", to, "路有终点:", from);
+      if (to.name === "layout") {
+        return;
+      }
       //判断路由是否已经打开
       //已经打开的 ，将其置为active
       //未打开的，将其放入队列里
       let flag = false;
       for (let item of this.openTab) {
-        console.log("item.name", item.name);
-        console.log("t0.name", to.name);
-
         if (item.name === to.name) {
-          console.log("to.path", to.path);
           this.$store.commit("set_active_index", to.path);
           flag = true;
           break;
@@ -111,9 +110,9 @@ export default {
       }
 
       if (!flag) {
-        console.log("to.path", to.path);
         this.$store.commit("add_tabs", { route: to.path, name: to.name });
         this.$store.commit("set_active_index", to.path);
+        console.log("目标路由:", to.path, "当前已打开的tab:", this.openTab);
       }
     }
   }
