@@ -1,0 +1,83 @@
+{
+  "menus": [{
+      "title": "系统管理",
+      "path": "",
+      "icon": "el-icon-menu",
+      "childMenu": [{
+        "title": "用户管理",
+        "path": "/layout/userList",
+        "flag": false,
+        "actions": ["Insert", "Del", "Modify"]
+      }, {
+        "title": "菜单管理",
+        "path": "/layout/menusList",
+        "flag": true,
+        "actions": ["Insert", "Del", "Modify"]
+      }, {
+        "title": "权限管理",
+        "path": "/layout/rightList",
+        "flag": true,
+        "actions": ["Insert", "Del", "Modify"]
+      }, {
+        "title": "角色管理",
+        "path": "/layout/roleList",
+        "flag": true,
+        "actions": ["Insert", "Del", "Modify"]
+      }]
+    },
+    {
+      "title": "辅助功能",
+      "icon": "el-icon-star-off",
+      "childMenu": [{
+        "title": "用户分布情况",
+        "path": "/Chart/userdata",
+        "actions": []
+      }]
+    }
+  ],
+  "user": [{
+      "id": "80",
+      "useranem": "管理员",
+      "password": "111",
+      "role": "admin"
+    },
+    {
+      "id": "81",
+      "useranem": "张三",
+      "password": "111",
+      "role": "test1"
+    },
+    {
+      "id": "82",
+      "useranem": "李四",
+      "password": "111",
+      "role": "test2"
+    },
+    {
+      "id": "83",
+      "useranem": "王五",
+      "password": "111",
+      "role": "test3"
+
+    }
+  ],
+  "Roles": [{
+      "id": "80",
+      "role": "admin"
+    },
+    {
+      "id": "81",
+      "role": "test1",
+      "menusright": ["用户管理", "权限管理"]
+    },
+    {
+      "id": "82",
+      "role": "test2"
+    },
+    {
+      "id": "83",
+      "role": "test3"
+
+    }
+  ]
+}
