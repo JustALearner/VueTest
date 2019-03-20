@@ -16,13 +16,15 @@
               type="date"
               placeholder="选择日期"
               :picker-options="pickerOptions1"
+              format="yyyy 年 MM 月 dd 日"
+              value-format="yyyy-MM-dd"
             ></el-date-picker>
           </el-form-item>
           <el-form-item label="住址">
             <el-cascader
               expand-trigger="hover"
               :options="options"
-              v-model="formInline.user.name"
+              v-model="formInline.user.address"
             ></el-cascader>
           </el-form-item>
           <el-form-item label="籍贯">
@@ -36,11 +38,16 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">查询</el-button>
+            <el-button type="primary" @click="onQuery">查询</el-button>
           </el-form-item>
         </el-form>
 
-        <el-table :data="tableData" border style="width: 100%">
+        <el-table
+          :data="tableData"
+          border
+          style="width: 100%"
+          v-loading="tableloading"
+        >
           <!-- <el-table-column type="selection" width="55"></el-table-column> -->
           <!-- <el-table-column
             prop="date"
@@ -82,9 +89,25 @@
             </template>
           </el-table-column>
         </el-table>
+        <div class="block" style="margin-top:30px;text-align:center">
+          <el-pagination
+            background
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-sizes="[100, 200, 300, 400]"
+            :page-size="100"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="400"
+          ></el-pagination>
+        </div>
       </el-col>
     </el-row>
-    <el-dialog title="修改个人信息" :visible="dialogFormVisible" size="tiny">
+    <el-dialog
+      title="修改个人信息"
+      :visible.sync="dialogFormVisible"
+      :before-close="handleBeforeClose"
+    >
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="姓名">
           <el-input v-model="form.name"></el-input>
@@ -98,16 +121,37 @@
             placeholder="选择日期"
             v-model="form.date"
             style="width: 100%;"
+            format="yyyy 年 MM 月 dd 日"
+            value-format="yyyy-MM-dd"
           ></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="handleSave" :loading="editLoading"
+          <el-button type="primary" @click="handleSave" v-loading="editLoading"
             >修改</el-button
           >
           <el-button @click="dialogFormVisible = false">取消</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
+
+    <!-- <el-button type="text" @click="outerVisible = true"
+      >点击打开外层 Dialog</el-button
+    >
+
+    <el-dialog title="外层 Dialog" :visible.sync="outerVisible">
+      <el-dialog
+        width="30%"
+        title="内层 Dialog"
+        :visible.sync="innerVisible"
+        append-to-body
+      ></el-dialog>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="outerVisible = false">取 消</el-button>
+        <el-button type="primary" @click="innerVisible = true"
+          >打开内层 Dialog</el-button
+        >
+      </div>
+    </el-dialog>-->
   </section>
 </template>
 
@@ -124,26 +168,36 @@ export default {
           place: ""
         }
       },
-      tableData: [
+      form: {
+        name: "",
+        date: "",
+        address: ""
+      },
+      //测试数据
+      userData: [
         {
           date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
+          name: "王小2",
+          address: "上海市普陀区金沙江路 1518 弄",
+          place: "深圳"
         },
         {
           date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
+          name: "王小3",
+          address: "上海市普陀区金沙江路 1517 弄",
+          place: "深圳"
         },
         {
           date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
+          name: "王小4",
+          address: "上海市普陀区金沙江路 1519 弄",
+          place: "深圳"
         },
         {
           date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
+          name: "王小5",
+          address: "上海市普陀区金沙江路 1516 弄",
+          place: "深圳"
         }
       ],
       options: [
@@ -230,8 +284,14 @@ export default {
           }
         ]
       },
+      tableData: [],
+      tableloading: false,
       editLoading: false,
-      dialogFormVisible: false
+      dialogFormVisible: false,
+      // outerVisible: false,
+      // innerVisible: false,
+      table_index: -1,
+      currentPage: 2
     };
   },
   methods: {
@@ -239,12 +299,19 @@ export default {
       this.dialogFormVisible = true;
       this.form = Object.assign({}, row);
       this.table_index = index;
+      console.log(this.form);
     },
     handleDelete(index, row) {
       console.log(index, row);
     },
-    onSubmit() {
-      console.log("submit!");
+    onQuery() {
+      let o = this.userData.filter(
+        t => t.name.indexOf(this.formInline.user.name) != -1
+        // t.name.indexOf(this.formInline.user.date) &&
+        // t.name.indexOf(this.formInline.user.address)
+      );
+      this.tableData = o;
+      console.log(o);
     },
     handleSave() {
       this.$confirm("确认提交?", "提示", {
@@ -253,6 +320,8 @@ export default {
         type: "info"
       })
         .then(() => {
+          this.editLoading = true;
+          this.tableData.splice(this.table_index, 1, this.form);
           this.$message({
             type: "success",
             message: "保存成功!"
@@ -263,11 +332,22 @@ export default {
         .catch(() => {
           this.$message({
             type: "info",
-            message: "已取消修改"
+            message: "已取消删除"
           });
-          this.editLoading = false;
-          this.dialogFormVisible = false;
         });
+    },
+    handleBeforeClose(done) {
+      this.$confirm("确认关闭？")
+        .then(() => {
+          done();
+        })
+        .catch(() => {});
+    },
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
     }
   }
 };
@@ -279,4 +359,7 @@ export default {
   height: 100%;
   background-color: blue;
 } */
+.el-pagination {
+  width: 200px;
+}
 </style>

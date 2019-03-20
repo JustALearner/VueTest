@@ -43,13 +43,14 @@ export default {
   display: -webkit-flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #b3c0d1;
+  background-color: #409eff;
   color: #333;
 }
 
 .el-header .logo {
   display: flex;
   align-items: center;
+  color: white;
 }
 .el-header .logo img {
   width: 80px;
@@ -67,6 +68,7 @@ export default {
 
 .el-dropdown {
   margin-left: 10px;
+  color: white;
 }
 
 .nav .userMenu {
