@@ -24,9 +24,9 @@
   </div>
 </template>
 <script>
-import myAside from "./Aside";
-import myHeader from "./Navbar.vue";
-import myTabs from "./Tabs.vue";
+import myAside from "../components/Aside";
+import myHeader from "../components/Navbar.vue";
+import myTabs from "../components/Tabs.vue";
 import { Loading, Message, Notification } from "element-ui";
 export default {
   data() {

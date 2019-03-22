@@ -29,12 +29,12 @@
                 </router-link>
               </el-menu-item-group>
             </el-submenu>
-            <router-link :key="index" :to="menu.path" v-else>
+            <!-- <router-link :key="index" :to="menu.path" v-else>
               <el-menu-item :index="menu.path">
                 <i :class="menu.icon"></i>
                 <span slot="title">{{ menu.title }}</span>
               </el-menu-item>
-            </router-link>
+            </router-link>-->
           </template>
         </el-menu>
       </el-col>

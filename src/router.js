@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
-import login from "./components/Login.vue";
-import layout from "./components/Layout.vue";
+import login from "./views/Login.vue";
+import layout from "./views/Layout.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -27,7 +27,12 @@ export default new Router({
         {
           path: "userInfos",
           name: "用户信息",
-          component: resolve => require(["./components/UserInfos.vue"], resolve)
+          component: resolve => require(["./views/UserInfos.vue"], resolve)
+        },
+        {
+          path: "editor",
+          name: "编辑器",
+          component: resolve => require(["./views/Editor.vue"], resolve)
         }
       ]
     }

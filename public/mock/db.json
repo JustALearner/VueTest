@@ -29,10 +29,16 @@
       "title": "辅助功能",
       "icon": "el-icon-star-off",
       "childMenu": [{
-        "title": "用户分布情况",
-        "path": "/Chart/userdata",
-        "actions": []
-      }]
+          "title": "图表",
+          "path": "/layout/chart",
+          "actions": []
+        },
+        {
+          "title": "编辑器",
+          "path": "/layout/editor",
+          "actions": []
+        }
+      ]
     }
   ],
   "user": [{
