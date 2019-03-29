@@ -8,12 +8,13 @@
 // app.use("/api", apiRoutes);
 // const HOST = process.env.HOST;
 // const PORT = process.env.PORT && Number(process.env.PORT);
-
+const db = require("./public/db");
 const jsonServer = require("json-server");
 const apiServer = jsonServer.create();
 // var appData = require("./public/mock/db.json");
 // var all = appData.all;
-const apiRouter = jsonServer.router("./public/mock/db.json");
+// const apiRouter = jsonServer.router("./public/mock/db.json");
+const apiRouter = jsonServer.router(db);
 const middlewares = jsonServer.defaults();
 
 apiServer.use(middlewares);

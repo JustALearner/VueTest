@@ -9,7 +9,9 @@ import "./assets/styles/reset.css";
 Vue.config.productionTip = false;
 // const HOST = process.env.HOST;
 // const PORT = process.env.PORT && Number(process.env.PORT);
+import "echarts/theme/macarons";
 
+import "echarts/theme/roma";
 // console.log(process.env.VUE_APP_TITLE);
 Vue.use(ElementUI);
 new Vue({

@@ -1,0 +1,26 @@
+[{
+    "id": "80",
+    "useranem": "管理员",
+    "password": "111",
+    "role": "admin"
+  },
+  {
+    "id": "81",
+    "useranem": "张三",
+    "password": "111",
+    "role": "test1"
+  },
+  {
+    "id": "82",
+    "useranem": "李四",
+    "password": "111",
+    "role": "test2"
+  },
+  {
+    "id": "83",
+    "useranem": "王五",
+    "password": "111",
+    "role": "test3"
+
+  }
+]

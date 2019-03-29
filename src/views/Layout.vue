@@ -76,7 +76,7 @@ export default {
   top: 80px;
   bottom: 0;
   right: 0;
-  padding: 0;
+  padding: 10px;
   background-color: #e9eef3;
   color: #333;
   text-align: left;

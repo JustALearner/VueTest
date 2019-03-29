@@ -30,9 +30,9 @@ export default new Router({
           component: resolve => require(["./views/UserInfos.vue"], resolve)
         },
         {
-          path: "editor",
-          name: "编辑器",
-          component: resolve => require(["./views/Editor.vue"], resolve)
+          path: "charts",
+          name: "图表",
+          component: resolve => require(["./views/Dashboard.vue"], resolve)
         }
       ]
     }

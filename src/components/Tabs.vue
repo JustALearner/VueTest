@@ -118,4 +118,19 @@ export default {
   }
 };
 </script>
-<style scoped></style>
+<style>
+.el-tabs--border-card {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  bottom: 10px;
+}
+.el-tabs--border-card .el-tabs__content {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 10px;
+  bottom: 10px;
+}
+</style>
