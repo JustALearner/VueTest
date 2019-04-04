@@ -14,11 +14,20 @@
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover" :body-style="{ height: '100%' }">
-            <pie></pie>
+            <bar></bar>
           </el-card>
         </el-col>
       </el-row>
     </div>
+    <!-- <div class="item three" @click="clickChart('2')">
+      <el-row>
+        <el-col :span="24">
+          <el-card shadow="hover" :body-style="{ height: '100%' }">
+            <pie></pie>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>-->
   </div>
   <!-- </div> -->
 </template>
@@ -28,10 +37,11 @@
 //例如：import 《组件名称》 from '《组件路径》';
 
 import line from "../components/charts/line";
+import bar from "../components/charts/bar";
 import pie from "../components/charts/pie";
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: { myLine: line, pie },
+  components: { myLine: line, bar, pie },
   data() {
     //这里存放数据
     return {
@@ -77,7 +87,7 @@ export default {
 .dashboard .el-card {
   height: 100%;
   border-radius: 20px;
-  background: rgba(40, 54, 72);
+  background: rgb(190, 196, 204, 0.3);
 }
 .flex-container {
   position: relative;
@@ -97,7 +107,7 @@ export default {
   height: 100%;
   text-align: center;
   transition: all 0.8s;
-  background: rgba(40, 54, 72);
+  /* background: rgba(40, 54, 72); */
   border-radius: 20px;
 }
 
@@ -106,5 +116,9 @@ export default {
 }
 .two {
   transform: scale(0.3) translate(-115%, 5%);
+}
+
+.three {
+  transform: scale(0.3) translate(-115%, 110%);
 }
 </style>

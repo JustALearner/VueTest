@@ -2,7 +2,7 @@
 <template>
   <div class="line">
     <stheme @switchTheme="switchTheme"></stheme>
-    <div class="main"></div>
+    <div id="line" class="main"></div>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import axios from "axios";
 // 引入基本模板
 let echarts = require("echarts/lib/echarts");
 // 引入组件
-require("echarts/lib/chart/pie");
+
 require("echarts/lib/chart/line");
 // 引入提示框和title组件
 require("echarts/lib/component/tooltip");
@@ -117,43 +117,10 @@ export default {
       );
     },
     switchTheme(c) {
-      if (c === "macarons") {
-        console.log("color:" + c);
-        let chart1 = echarts.getInstanceByDom(
-          document.querySelector(".line .main")
-        );
-        // this.myChart = echarts.getInstanceByDom(
-        //   document.querySelector(".line .main")
-        // );
-        let option = chart1.getOption();
-        console.log("当前chart实例: ", chart1);
+      this.myChart.dispose();
+      this.myChart = echarts.init(document.getElementById("line"), c);
+      this.myChart.setOption(this.lineOption);
 
-        chart1.dispose();
-        chart1 = echarts.init(
-          document.querySelector(".line .main"),
-          "macarons"
-        );
-        // console.log("新chart实例: ", this.myChart);
-        chart1.setOption(option);
-        this.myChart = chart1;
-        console.log("新chart实例: ", this.myChart);
-      } else {
-        console.log("color:" + c);
-        let chart1 = echarts.getInstanceByDom(
-          document.querySelector(".line .main")
-        );
-        // this.myChart = echarts.getInstanceByDom(
-        //   document.querySelector(".line .main")
-        // );
-        let option = chart1.getOption();
-        console.log("当前chart实例: ", chart1);
-
-        chart1.dispose();
-        chart1 = echarts.init(document.querySelector(".line .main"), "roma");
-        // console.log("新chart实例: ", this.myChart);
-        chart1.setOption(option);
-        this.myChart = chart1;
-      }
       // axios.get("api/" + c).then(
       //   res => {
       //     // this.themeJson = JSON.parse(res);

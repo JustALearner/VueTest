@@ -73,6 +73,9 @@ export default {
       //   console.log(res);
       // });
     }
+  },
+  mounted() {
+    console.log(this.$store.state.visitedViews);
   }
 };
 </script>

@@ -359,6 +359,9 @@ export default {
   height: 100%;
   background-color: blue;
 } */
+.el-row {
+  padding: 5px;
+}
 .el-pagination {
   width: 200px;
 }

@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 // import Home from "./views/Home.vue";
 import login from "./views/Login.vue";
-import layout from "./views/Layout.vue";
+import layout from "./views/layout/Layout.vue";
 Vue.use(Router);
 
 export default new Router({

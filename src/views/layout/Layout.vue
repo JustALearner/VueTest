@@ -1,21 +1,17 @@
 <template>
   <div>
     <el-container>
-      <!-- <el-header height="80px"> -->
       <my-header></my-header>
-      <!-- </el-header> -->
       <el-container>
         <el-aside width="200px">
           <my-aside></my-aside>
         </el-aside>
         <el-main>
-          <keep-alive>
-            <!-- <router-view></router-view> -->
-            <my-tabs></my-tabs>
-          </keep-alive>
+          <!-- <my-tabs></my-tabs> -->
+          <tag-view></tag-view>
+          <main-content></main-content>
         </el-main>
       </el-container>
-
       <el-footer>
         <button @click="isShowAbout = !isShowAbout">123</button>
         <p v-show="isShowAbout" class="slotText">{{ username }}</p>
@@ -24,9 +20,11 @@
   </div>
 </template>
 <script>
-import myAside from "../components/Aside";
-import myHeader from "../components/Navbar.vue";
-import myTabs from "../components/Tabs.vue";
+import myAside from "../../components/Aside";
+import myHeader from "../../components/Navbar.vue";
+import tagView from "./TagsView";
+import mainContent from "./MainContent";
+// import myTabs from "../../components/Tabs.vue";
 import { Loading, Message, Notification } from "element-ui";
 export default {
   data() {
@@ -36,20 +34,20 @@ export default {
     };
   },
   created() {
-    let loadingInstance = Loading.service({
-      text: "我是一个loading,我正在正在加载",
-      lock: true,
-      target: ".loadingTarget",
-      spinner: "el-icon-loading",
-      fullscreen: false
-    });
-    setTimeout(() => {
-      loadingInstance.close();
-    }, 2000);
+    // let loadingInstance = Loading.service({
+    //   text: "我是一个loading,我正在正在加载",
+    //   lock: true,
+    //   target: ".loadingTarget",
+    //   spinner: "el-icon-loading",
+    //   fullscreen: false
+    // });
+    // setTimeout(() => {
+    //   loadingInstance.close();
+    // }, 2000);
     this.username = this.$route.query.username;
     // console.log(this.username);
   },
-  components: { myAside, myHeader, myTabs },
+  components: { myAside, myHeader, tagView, mainContent },
   methods: {},
   watch: {
     isShowAbout: function() {
