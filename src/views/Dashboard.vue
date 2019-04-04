@@ -1,7 +1,11 @@
 <template>
   <div class="dashboard">
     <!-- <div class="flex-container"> -->
-    <div class="item one" @click="clickChart('1')">
+    <div
+      class="item one"
+      @click="clickChart($event)"
+      style="transform: scale(0.3) translate(-115%, -110%)"
+    >
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover" :body-style="{ height: '100%' }">
@@ -10,7 +14,11 @@
         </el-col>
       </el-row>
     </div>
-    <div class="item two" @click="clickChart('2')">
+    <div
+      class="item two"
+      @click="clickChart($event)"
+      style="transform: scale(0.3) translate(-115%, 0);"
+    >
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover" :body-style="{ height: '100%' }">
@@ -19,7 +27,11 @@
         </el-col>
       </el-row>
     </div>
-    <!-- <div class="item three" @click="clickChart('2')">
+    <div
+      class="item three"
+      @click="clickChart($event)"
+      style="transform: scale(0.3) translate(-115%, 110%);"
+    >
       <el-row>
         <el-col :span="24">
           <el-card shadow="hover" :body-style="{ height: '100%' }">
@@ -27,7 +39,20 @@
           </el-card>
         </el-col>
       </el-row>
-    </div>-->
+    </div>
+    <div
+      class="item four active"
+      @click="clickChart($event)"
+      style=" transform: scale(1) translate(28%, 2%);"
+    >
+      <el-row>
+        <el-col :span="24">
+          <el-card shadow="hover" :body-style="{ height: '100%' }">
+            <radar></radar>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
   </div>
   <!-- </div> -->
 </template>
@@ -39,9 +64,10 @@
 import line from "../components/charts/line";
 import bar from "../components/charts/bar";
 import pie from "../components/charts/pie";
+import radar from "../components/charts/radar";
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: { myLine: line, bar, pie },
+  components: { myLine: line, bar, pie, radar },
   data() {
     //这里存放数据
     return {
@@ -54,8 +80,16 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    clickChart(index) {
-      console.log(index);
+    clickChart(e) {
+      if (e.currentTarget.className.indexOf("active") > 0) return;
+      let clickel = e.currentTarget;
+      let active = document.querySelector(".dashboard .active");
+      let transform1 = clickel.style.transform;
+      let transform2 = active.style.transform;
+      active.classList.remove("active");
+      clickel.classList.add("active");
+      e.currentTarget.style.transform = transform2;
+      active.style.transform = transform1;
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -111,14 +145,23 @@ export default {
   border-radius: 20px;
 }
 
-.one {
-  transform: scale(0.3) translate(-115%, -100%);
+/* .one {
+  transform: scale(0.3) translate(-115%, -110%);
 }
 .two {
-  transform: scale(0.3) translate(-115%, 5%);
-}
+  transform: scale(0.3) translate(-115%, 0);
+} */
 
-.three {
+/* .three {
   transform: scale(0.3) translate(-115%, 110%);
+} */
+/* .four {
+  transform: scale(1) translate(28%, 2%);
+} */
+
+.active {
+  height: 96%;
+  width: 76%;
+  margin-left: 5px;
 }
 </style>

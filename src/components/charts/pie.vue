@@ -2,7 +2,7 @@
 <template>
   <div class="pie">
     <stheme @switchTheme="switchTheme"></stheme>
-    <div class="main"></div>
+    <div id="pie" class="main"></div>
   </div>
 </template>
 
@@ -75,7 +75,7 @@ export default {
     switchTheme(c) {
       this.myChart.dispose();
       this.myChart = echarts.init(document.getElementById("pie"), c);
-      this.myChart.setOption(this.lineOption);
+      this.myChart.setOption(this.pieOption);
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -101,10 +101,10 @@ export default {
 };
 </script>
 <style scoped>
-.bar {
+.pie {
   height: 100%;
 }
-.bar .main {
+.pie .main {
   height: 90%;
 }
 </style>
