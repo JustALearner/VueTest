@@ -11,6 +11,7 @@ Vue.config.productionTip = false;
 // const PORT = process.env.PORT && Number(process.env.PORT);
 import "echarts/theme/roma";
 import "echarts/theme/macarons";
+import "animate.css";
 // console.log(process.env.VUE_APP_TITLE);
 Vue.use(ElementUI);
 new Vue({

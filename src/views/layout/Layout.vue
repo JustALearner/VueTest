@@ -80,6 +80,7 @@ export default {
   text-align: left;
   overflow-x: hidden;
   overflow-y: auto;
+  padding: 0px;
 }
 
 body > .el-container {

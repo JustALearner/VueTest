@@ -20,6 +20,12 @@ export default new Router({
       component: login
     },
     {
+      path: "/editor",
+      name: "editor",
+      component: resolve => require(["./views/MyTinymce.vue"], resolve)
+    },
+
+    {
       path: "/layout",
       name: "layout",
       component: layout,
@@ -27,12 +33,26 @@ export default new Router({
         {
           path: "userInfos",
           name: "用户信息",
-          component: resolve => require(["./views/UserInfos.vue"], resolve)
+          component: resolve => require(["./views/UserInfos.vue"], resolve),
+          meta: {
+            title: "信息"
+          }
         },
         {
           path: "charts",
           name: "图表",
-          component: resolve => require(["./views/Dashboard.vue"], resolve)
+          component: resolve => require(["./views/Dashboard.vue"], resolve),
+          meta: {
+            title: "图表"
+          }
+        },
+        {
+          path: "editor",
+          name: "富文本",
+          component: resolve => require(["./views/MyTinymce.vue"], resolve),
+          meta: {
+            title: "编辑器"
+          }
         }
       ]
     }

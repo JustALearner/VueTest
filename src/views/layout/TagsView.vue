@@ -86,7 +86,7 @@ export default {
   },
   watch: {
     $route(to, from) {
-      console.log("路由起点:", from, "路有终点:", to);
+      // console.log("路由起点:", from, "路有终点:", to);
       this.addTags();
       // this.moveToCurrentTag();
     },
