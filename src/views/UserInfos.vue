@@ -3,32 +3,32 @@
     <el-row>
       <el-col :span="24">
         <el-form :inline="true" class="demo-form-inline" v-model="formInline">
-          <el-form-item label="姓名">
+          <el-form-item :label="$t('form.name')">
             <el-input
-              placeholder="姓名"
+              :placeholder="$t('form.name')"
               v-model="formInline.user.name"
             ></el-input>
           </el-form-item>
-          <el-form-item label="年份">
+          <el-form-item :label="$t('form.date')">
             <el-date-picker
               v-model="formInline.user.date"
               align="right"
               type="date"
-              placeholder="选择日期"
+              :placeholder="$t('form.select')"
               :picker-options="pickerOptions1"
-              format="yyyy 年 MM 月 dd 日"
+              format="yyyy-MM-dd"
               value-format="yyyy-MM-dd"
             ></el-date-picker>
           </el-form-item>
-          <el-form-item label="住址">
+          <el-form-item :label="$t('form.address')">
             <el-cascader
               expand-trigger="hover"
               :options="options"
               v-model="formInline.user.address"
             ></el-cascader>
           </el-form-item>
-          <el-form-item label="籍贯">
-            <el-select placeholder="请选择" v-model="formInline.user.place">
+          <el-form-item :label="$t('form.place')">
+            <el-select placeholder="Select" v-model="formInline.user.place">
               <el-option
                 v-for="item in places"
                 :key="item.value"
@@ -38,7 +38,9 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onQuery">查询</el-button>
+            <el-button type="primary" @click="onQuery">{{
+              $t("form.fetch")
+            }}</el-button>
           </el-form-item>
         </el-form>
 
@@ -54,37 +56,40 @@
             label="日期"
             width="180"
           ></el-table-column>-->
-          <el-table-column label="日期" width="180">
+          <el-table-column :label="$t('table.date')" width="180">
             <template slot-scope="scope">
               <i class="el-icon-time"></i>
               <span style="margin-left: 10px">{{ scope.row.date }}</span>
             </template>
           </el-table-column>
           <!-- <el-table-column prop="name" label="姓名" width="180"></el-table-column> -->
-          <el-table-column label="姓名" width="180">
+          <el-table-column :label="$t('table.name')" width="180">
             <template slot-scope="scope">
               <el-popover trigger="hover" placement="top">
-                <p>姓名: {{ scope.row.name }}</p>
-                <p>住址: {{ scope.row.address }}</p>
+                <p>{{ $t("table.name") }}: {{ scope.row.name }}</p>
+                <p>{{ $t("table.address") }}: {{ scope.row.address }}</p>
                 <div slot="reference" class="name-wrapper">
                   <el-tag size="medium">{{ scope.row.name }}</el-tag>
                 </div>
               </el-popover>
             </template>
           </el-table-column>
-          <el-table-column prop="address" label="地址"></el-table-column>
-          <el-table-column label="操作">
+          <el-table-column
+            prop="address"
+            :label="$t('table.place')"
+          ></el-table-column>
+          <el-table-column :label="$t('table.operation')">
             <template slot-scope="scope">
               <el-button
                 size="mini"
                 @click="handleEdit(scope.$index, scope.row)"
-                >编辑</el-button
+                >{{ $t("table.edit") }}</el-button
               >
               <el-button
                 size="mini"
                 type="danger"
                 @click="handleDelete(scope.$index, scope.row)"
-                >删除</el-button
+                >{{ $t("table.delete") }}</el-button
               >
             </template>
           </el-table-column>
@@ -104,32 +109,37 @@
       </el-col>
     </el-row>
     <el-dialog
-      title="修改个人信息"
+      :title="$t('table.edit')"
       :visible.sync="dialogFormVisible"
       :before-close="handleBeforeClose"
     >
       <el-form ref="form" :model="form" label-width="80px">
-        <el-form-item label="姓名">
+        <el-form-item :label="$t('form.name')">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
-        <el-form-item label="地址">
+        <el-form-item :label="$t('form.address')">
           <el-input v-model="form.address"></el-input>
         </el-form-item>
-        <el-form-item label="出生日期">
+        <el-form-item :label="$t('form.date')">
           <el-date-picker
             type="date"
-            placeholder="选择日期"
+            :placeholder="$t('form.select')"
             v-model="form.date"
             style="width: 100%;"
-            format="yyyy 年 MM 月 dd 日"
+            format="yyyy-MM-dd"
             value-format="yyyy-MM-dd"
           ></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="handleSave" v-loading="editLoading"
-            >修改</el-button
+          <el-button
+            type="primary"
+            @click="handleSave"
+            v-loading="editLoading"
+            >{{ $t("table.confirm") }}</el-button
           >
-          <el-button @click="dialogFormVisible = false">取消</el-button>
+          <el-button @click="dialogFormVisible = false">{{
+            $t("table.cancel")
+          }}</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -324,7 +334,7 @@ export default {
           this.tableData.splice(this.table_index, 1, this.form);
           this.$message({
             type: "success",
-            message: "保存成功!"
+            message: "save success!"
           });
           this.editLoading = false;
           this.dialogFormVisible = false;
@@ -332,7 +342,7 @@ export default {
         .catch(() => {
           this.$message({
             type: "info",
-            message: "已取消删除"
+            message: "cancel"
           });
         });
     },

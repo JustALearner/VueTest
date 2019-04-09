@@ -19,11 +19,6 @@ export default new Router({
       name: "login",
       component: login
     },
-    {
-      path: "/editor",
-      name: "editor",
-      component: resolve => require(["./views/MyTinymce.vue"], resolve)
-    },
 
     {
       path: "/layout",
@@ -32,26 +27,26 @@ export default new Router({
       children: [
         {
           path: "userInfos",
-          name: "用户信息",
+          name: "userinfo",
           component: resolve => require(["./views/UserInfos.vue"], resolve),
           meta: {
-            title: "信息"
+            title: "userinfo"
           }
         },
         {
           path: "charts",
-          name: "图表",
+          name: "chart",
           component: resolve => require(["./views/Dashboard.vue"], resolve),
           meta: {
-            title: "图表"
+            title: "chart"
           }
         },
         {
           path: "editor",
-          name: "富文本",
+          name: "editor",
           component: resolve => require(["./views/MyTinymce.vue"], resolve),
           meta: {
-            title: "编辑器"
+            title: "editor"
           }
         }
       ]

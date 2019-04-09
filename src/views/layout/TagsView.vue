@@ -17,7 +17,7 @@
         @click.middle.native="closeSelectedTag(tag)"
         @contextmenu.prevent.native="openMenu(tag, $event)"
       >
-        {{ tag.title }}
+        {{ generateTitle(tag.title) }}
         <span
           v-if="!tag.meta.affix"
           class="el-icon-close"
@@ -31,24 +31,16 @@
       class="contextmenu"
     >
       <li @click="refreshSelectedTag(selectedTag)">
-        刷新
-        <!-- {{ $t("tagsView.refresh") }} -->
+        {{ $t("tagsView.refresh") }}
       </li>
       <li
         v-if="!(selectedTag.meta && selectedTag.meta.affix)"
         @click="closeSelectedTag(selectedTag)"
       >
-        关闭当前
-        <!-- {{ $t("tagsView.close") }} -->
+        {{ $t("tagsView.close") }}
       </li>
-      <li @click="closeOthersTags">
-        关闭其他
-        <!-- {{ $t("tagsView.closeOthers") }} -->
-      </li>
-      <li @click="closeAllTags(selectedTag)">
-        关闭全部
-        <!-- {{ $t("tagsView.closeAll") }} -->
-      </li>
+      <li @click="closeOthersTags">{{ $t("tagsView.closeOthers") }}</li>
+      <li @click="closeAllTags(selectedTag)">{{ $t("tagsView.closeAll") }}</li>
     </ul>
   </div>
 </template>
@@ -226,6 +218,17 @@ export default {
     },
     closeMenu() {
       this.visible = false;
+    },
+    generateTitle(title) {
+      const hasKey = this.$te("route." + title);
+
+      if (hasKey) {
+        // $t :this method from vue-i18n, inject in @/lang/index.js
+        const translatedTitle = this.$t("route." + title);
+
+        return translatedTitle;
+      }
+      return title;
     }
   }
 };

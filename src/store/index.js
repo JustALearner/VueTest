@@ -1,11 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import tagsView from "./modules/tagsViews";
+import lang from "./modules/lang";
 import getters from "./getter";
 Vue.use(Vuex);
 const store = new Vuex.Store({
   modules: {
-    tagsView
+    tagsView,
+    lang
   },
   getters
 

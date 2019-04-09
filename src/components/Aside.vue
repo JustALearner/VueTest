@@ -13,7 +13,7 @@
             <el-submenu :index="index + ''" :key="index" v-if="menu.childMenu">
               <template slot="title">
                 <i :class="menu.icon"></i>
-                <span>{{ menu.title }}</span>
+                <span>{{ generateTitle(menu.title) }}</span>
               </template>
               <el-menu-item-group
                 :key="index"
@@ -24,7 +24,7 @@
                     :index="item.path"
                     :key="item.path"
                     :disabled="item.flag"
-                    >{{ item.title }}</el-menu-item
+                    >{{ generateTitle(item.title) }}</el-menu-item
                   >
                 </router-link>
               </el-menu-item-group>
@@ -69,6 +69,17 @@ export default {
           console.log(err);
         }
       );
+    },
+    generateTitle(title) {
+      const hasKey = this.$te("route." + title);
+
+      if (hasKey) {
+        // $t :this method from vue-i18n, inject in @/lang/index.js
+        const translatedTitle = this.$t("route." + title);
+
+        return translatedTitle;
+      }
+      return title;
     }
   },
   created() {

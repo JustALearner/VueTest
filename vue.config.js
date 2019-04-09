@@ -26,7 +26,7 @@ apiServer.listen(3334, () => {
 
 module.exports = {
   // publicPath: "/app",
-  baseUrl: process.env.NODE_ENV === "production" ? "./" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
   devServer: {
     proxy: {
       "/api": {

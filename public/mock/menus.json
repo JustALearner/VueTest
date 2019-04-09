@@ -1,39 +1,39 @@
 [{
-    "title": "系统管理",
+    "title": "systemmanagement",
     "path": "",
     "icon": "el-icon-menu",
     "childMenu": [{
-      "title": "用户管理",
+      "title": "userinfo",
       "path": "/layout/userInfos",
       "flag": false,
       "actions": ["Insert", "Del", "Modify"]
     }, {
-      "title": "菜单管理",
+      "title": "menuinfo",
       "path": "/layout/menusList",
       "flag": true,
       "actions": ["Insert", "Del", "Modify"]
     }, {
-      "title": "权限管理",
+      "title": "rightinfo",
       "path": "/layout/rightList",
       "flag": true,
       "actions": ["Insert", "Del", "Modify"]
     }, {
-      "title": "角色管理",
+      "title": "roleinfo",
       "path": "/layout/roleList",
       "flag": true,
       "actions": ["Insert", "Del", "Modify"]
     }]
   },
   {
-    "title": "辅助功能",
+    "title": "other",
     "icon": "el-icon-star-off",
     "childMenu": [{
-        "title": "图表",
+        "title": "chart",
         "path": "/layout/charts",
         "actions": []
       },
       {
-        "title": "编辑器",
+        "title": "editor",
         "path": "/layout/editor",
         "actions": []
       }

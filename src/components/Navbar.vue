@@ -5,18 +5,19 @@
       管理员系统
     </a>
     <div class="nav">
+      <lang-select></lang-select>
       <div class="userMenu">
         <span class="author">
           <img src="../assets/images/2.png" alt />
         </span>
         <el-dropdown>
           <span class="el-dropdown-link">
-            设置
+            {{ $t("navbar.setting") }}
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>切换账号</el-dropdown-item>
-            <el-dropdown-item>注销</el-dropdown-item>
+            <!-- <el-dropdown-item>{{ $t("navbar.setting") }}</el-dropdown-item> -->
+            <el-dropdown-item>{{ $t("navbar.logOut") }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -24,7 +25,11 @@
   </el-header>
 </template>
 <script>
+import LangSelect from "../components/LanguageSelect";
 export default {
+  components: {
+    LangSelect
+  },
   data() {
     return {
       message: "我是一个头部菜单"
