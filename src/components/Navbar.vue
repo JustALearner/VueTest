@@ -81,7 +81,8 @@ export default {
   display: -webkit-flex;
   align-items: center;
   -webkit-align-items: center;
-  margin-left: 100px;
+  margin-left: 50px;
+  min-width: 120px;
 }
 .nav .userMenu .author {
   width: 40px;

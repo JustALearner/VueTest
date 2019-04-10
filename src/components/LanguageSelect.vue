@@ -1,21 +1,18 @@
 <!--  -->
 <template>
   <div>
-    <!-- <el-dropdown trigger="click" @command="handleSetLanguage">
-    <el-dropdown-menu slot="dropdown">
-      <el-dropdown-item :disabled="language === 'zh'" command="zh"
-        >中文</el-dropdown-item
-      >
-      <el-dropdown-item :disabled="language === 'en'" command="en"
-        >English</el-dropdown-item
-      >
-    </el-dropdown-menu>
-    </el-dropdown>-->
-    <el-dropdown trigger="click" @command="handleSetLanguage">
-      <el-button type="success">
+    <!-- <el-dropdown trigger="click" @command="handleSetLanguage"> -->
+    <el-dropdown slot="dropdown" trigger="click" @command="handleSetLanguage">
+      <!-- <el-button type="success">
         更多菜单
         <i class="el-icon-arrow-down el-icon--right"></i>
-      </el-button>
+      </el-button>-->
+      <div>
+        <!-- <svg>
+        <use xlink:href="#language"></use>
+        </svg>-->
+        <svg-icon icon-class="language" class-name="international-icon" />
+      </div>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item :disabled="language === 'en'" command="en"
           >英文</el-dropdown-item
@@ -32,6 +29,7 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 
+import "../icons/svg/language.svg";
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
@@ -71,4 +69,9 @@ export default {
   activated() {} //如果页面有keep-alive缓存功能，这个函数会触发
 };
 </script>
-<style scoped></style>
+<style scoped>
+.international-icon {
+  width: 45px !important;
+  height: 45px !important;
+}
+</style>
