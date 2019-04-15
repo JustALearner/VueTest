@@ -14,12 +14,12 @@
         <svg-icon icon-class="language" class-name="international-icon" />
       </div>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item :disabled="language === 'en'" command="en"
-          >英文</el-dropdown-item
-        >
-        <el-dropdown-item :disabled="language === 'zh'" command="zh"
-          >简体中文</el-dropdown-item
-        >
+        <el-dropdown-item :disabled="language === 'en'" command="en">{{
+          $t("navbar.english")
+        }}</el-dropdown-item>
+        <el-dropdown-item :disabled="language === 'zh'" command="zh">{{
+          $t("navbar.chinese")
+        }}</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>

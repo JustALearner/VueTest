@@ -12,7 +12,9 @@ export default {
   navbar: {
     language: "Language",
     logOut: "Log Out",
-    setting: "Setting"
+    setting: "Setting",
+    english: "English",
+    chinese: "Chinese"
   },
   login: {
     title: "Login Form",

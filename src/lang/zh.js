@@ -12,7 +12,9 @@ export default {
   navbar: {
     language: "语言",
     logOut: "退出",
-    setting: "设置"
+    setting: "设置",
+    english: "英文",
+    chinese: "简体中文"
   },
   login: {
     title: "系统登录",
