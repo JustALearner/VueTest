@@ -72,7 +72,53 @@ export default {
             type: "value"
           }
         ],
-        series: []
+        series: [
+          {
+            name: "邮件营销",
+            type: "line",
+            stack: "总量",
+            areaStyle: {},
+            data: [120, 132, 101, 134, 90, 230, 210]
+          },
+          {
+            name: "联盟广告",
+            type: "line",
+            stack: "总量",
+            areaStyle: {},
+            data: [220, 182, 191, 234, 290, 330, 310]
+          },
+          {
+            name: "视频广告",
+            type: "line",
+            stack: "总量",
+            areaStyle: {},
+            data: [150, 232, 201, 154, 190, 330, 410]
+          },
+          {
+            name: "直接访问",
+            type: "line",
+            stack: "总量",
+            areaStyle: {
+              normal: {}
+            },
+            data: [320, 332, 301, 334, 390, 330, 320]
+          },
+          {
+            " name": "搜索引擎",
+            type: "line",
+            stack: "总量",
+            label: {
+              normal: {
+                show: true,
+                position: "top"
+              }
+            },
+            areaStyle: {
+              normal: {}
+            },
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+          }
+        ]
       },
       themeJson: {}
     };
@@ -85,36 +131,36 @@ export default {
   methods: {
     getData() {
       // axios.get(config.dynamicDomain+url, {
-      ajaxHelper.get("api/line").then(
-        res => {
-          // console.log("开始加载数据", res);
-          this.lineSeries = res;
-          // console.log("数据返回成功", this.lineSeries);
-          this.myChart = echarts.init(
-            document.querySelector(".line .main"),
-            "macarons"
-          );
-          let temp = [];
-          temp = this.lineSeries.map(item => {
-            return item.name;
-          });
-          // console.log("准备legend数据", temp);
-          this.lineOption.legend.data = temp;
-          this.lineOption.series = this.lineSeries;
-          this.myChart.setOption(this.lineOption);
-          // console.log("option1", this.lineOption);
-
-          window.addEventListener(
-            "resize",
-            function() {
-              this.myChart.resize();
-            }.bind(this)
-          );
-        },
-        err => {
-          console.log(err);
-        }
+      // ajaxHelper.get("api/line").then(
+      //   res => {
+      // console.log("开始加载数据", res);
+      // this.lineSeries = res;
+      // console.log("数据返回成功", this.lineSeries);
+      this.myChart = echarts.init(
+        document.querySelector(".line .main"),
+        "macarons"
       );
+      let temp = [];
+      temp = this.lineSeries.map(item => {
+        return item.name;
+      });
+      // console.log("准备legend数据", temp);
+      this.lineOption.legend.data = temp;
+      this.lineOption.series = this.lineSeries;
+      this.myChart.setOption(this.lineOption);
+      // console.log("option1", this.lineOption);
+
+      window.addEventListener(
+        "resize",
+        function() {
+          this.myChart.resize();
+        }.bind(this)
+      );
+      //   },
+      //   err => {
+      //     console.log(err);
+      //   }
+      // );
     },
     switchTheme(c) {
       this.myChart.dispose();

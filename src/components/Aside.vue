@@ -60,7 +60,7 @@ export default {
     },
     getMenuData() {
       // axios.get(config.dynamicDomain+url, {
-      ajaxHelper.get("api/menu").then(
+      ajaxHelper.get("api/menus").then(
         res => {
           // console.log(res);
           this.menus = res;

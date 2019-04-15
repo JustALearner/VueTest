@@ -1,19 +1,8 @@
-// const express = require("express");
-// const app = express();
-// var appData = require("./public/mock/db.json");
-// var all = appData.all;
-
-// var apiRoutes = express.Router();
-
-// app.use("/api", apiRoutes);
 // const HOST = process.env.HOST;
 // const PORT = process.env.PORT && Number(process.env.PORT);
 const db = require("./public/db");
 const jsonServer = require("json-server");
 const apiServer = jsonServer.create();
-// var appData = require("./public/mock/db.json");
-// var all = appData.all;
-// const apiRouter = jsonServer.router("./public/mock/db.json");
 const apiRouter = jsonServer.router(db);
 const middlewares = jsonServer.defaults();
 
@@ -35,9 +24,9 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://localhost:3334/", //对应自己的接口
+        target: "https://localhost:3334/", //对应自己的接口
         pathRewrite: {
-          "^/api": ""
+          "^/api": "/api"
         },
         changeOrigin: true,
         ws: true

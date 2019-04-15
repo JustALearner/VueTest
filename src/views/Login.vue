@@ -63,11 +63,11 @@ export default {
       // console.log(this.$Vue);
       this.$router.push({
         //核心语句
-        path: "/layout", //跳转的路径
-        query: {
-          //路由传参时push和query搭配使用 ，作用时传递参数
-          username: this.username
-        }
+        path: "/layout" //跳转的路径
+        // query: {
+        //   //路由传参时push和query搭配使用 ，作用时传递参数
+        //   username: this.username
+        // }
       });
       // this.$http.get("/api/all").then(res => {
       //   console.log(res);

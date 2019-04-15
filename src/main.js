@@ -15,11 +15,12 @@ import "echarts/theme/macarons";
 import "animate.css";
 import i18n from "./lang";
 import "./icons";
-// console.log(process.env.VUE_APP_TITLE);
+console.log(process.env.NODE_ENV, "baseUrl", process.env.VUE_APP_BASEURL);
 Vue.use(ElementUI, {
   size: Cookies.get("size") || "medium", // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)
 });
+
 
 // const path = require("path");
 

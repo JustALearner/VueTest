@@ -3,7 +3,7 @@ import router from "../router"; //配置路由的文件
 import { Loading, Message } from "element-ui";
 /****** 创建axios实例 ******/
 const Axios = axios.create({
-  baseURL: process.env.BASE_URL, // api的base_url
+  baseURL: process.env.VUE_APP_BASEURL, // api的base_url
   timeout: 5000, // 请求超时时间
   responseType: "json",
   withCredentials: true, // 是否允许带cookie这些
